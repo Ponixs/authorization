@@ -1,9 +1,16 @@
 <?php
 	session_start();
-	if ($_COOKIE['cook']=="") {
+	if($_SESSION['user']['Token']<(time()))header('Location: index.php');
+	if($_SESSION['user']['pass']<time())header('Location: password_change.php');
+	/*	if (!isset($_COOKIE["cook"])) {
 		header('Location: index.php');
+
 	}
-	setcookie("cook","cook",time()+20);
+	else
+	{
+		setcookie("cook","cook",time()+20);
+	}
+	*/
 ?>
 <html>
 	<head>

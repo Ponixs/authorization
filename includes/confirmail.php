@@ -1,6 +1,6 @@
 <?php
     session_start();
-    setcookie("cook","cook",time()+20);
+    
     require_once 'connect.php';
     $email=$_POST['email'];
     $find_user=mysqli_query($connect, "SELECT * FROM `users` WHERE `email` = '$email' ");

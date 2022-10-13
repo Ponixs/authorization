@@ -7,10 +7,11 @@
     $user=mysqli_fetch_assoc($find_user);
     $password=$_POST['password'];
     $password = password_hash('$password',PASSWORD_DEFAULT);
-    
-    $full_name=$user['full_name'];
+    $pass=$user['pass'];
+    $username=$user['full_name'];
     $email=$user['email'];
-    mysqli_query($connect, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`) VALUES (NULL, '$full_name', '$login', '$email', '$password')");
+    
+    mysqli_query($connect, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`,`pass`) VALUES (NULL, '$username', '$login', '$email', '$password','$pass')");
     $_SESSION['message'] = 'You have changed your password!';        
 
     $connect->close();

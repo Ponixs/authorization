@@ -1,4 +1,5 @@
 <?php
+
     session_start();
 
     require_once 'connect.php';
@@ -9,11 +10,24 @@
         $user=mysqli_fetch_assoc($find_user);
         
         if (password_verify('$password', $user['password'])) {
-            setcookie("cook","cook",time()+20);
+            $username=$user['full_name'];
+            $login=$user['login'];
+            $email=$user['email'];
+            $password=$user['password'];
+            $id=$user['id'];
+            $Token=time()+60;
+            $pass=$user['pass'];
+            $connect->query("DELETE FROM `users` WHERE `login` = '$login'AND `password`='$password' ");
+
+            mysqli_query($connect, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`,`Token`,`pass`) VALUES ('$id',
+             '$username', '$login', '$email', '$password','$Token','$pass')");
+
             $_SESSION['user']=[
-            "id"=>$user['id'],
-            "username"=>$user['full_name'],
-            "email"=>$user['email']
+            "id"=>$id,
+            "username"=>$username,
+            "email"=>$email,
+            "Token"=>$Token,
+            "pass"=>$pass
             ];
 
             header('Location: ../profile.php');
