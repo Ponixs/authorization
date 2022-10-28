@@ -1,16 +1,15 @@
 <?php
 	session_start();
-	if($_SESSION['user']['Token']<(time()))header('Location: index.php');
-	if($_SESSION['user']['pass']<time())header('Location: password_change.php');
-	/*	if (!isset($_COOKIE["cook"])) {
+	if (empty($_SESSION)) {
+		header("Location: register.php",true,302);
+	}
+	else {
+		if($_SESSION['user']['Token']<(time())){
+		$_SESSION['message']='Your session has expired';
 		header('Location: index.php');
-
+		}
+		if($_SESSION['user']['pass']<time())header('Location: password_change.php');
 	}
-	else
-	{
-		setcookie("cook","cook",time()+20);
-	}
-	*/
 ?>
 <html>
 	<head>
@@ -25,7 +24,7 @@
 		</form>
 		<form action="index.php" method="post">
 			
-			<h4>Your name: <?= $_SESSION['user']['username'] ?></h4>
+			<div>Your name: <?= $_SESSION['user']['username'] ?></div>
 			<a href="#">  <?=$_SESSION['user']['email'] ?></a>
 			<button tipe ="submit"><b>leave<hr></b></button>
 

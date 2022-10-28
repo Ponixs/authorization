@@ -29,7 +29,7 @@
             "Token"=>$Token,
             "pass"=>$pass
             ];
-
+            
             header('Location: ../profile.php');
             
         }

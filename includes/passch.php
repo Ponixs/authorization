@@ -7,7 +7,7 @@
     $user=mysqli_fetch_assoc($find_user);
     $password=$_POST['password'];
     $password = password_hash('$password',PASSWORD_DEFAULT);
-    $pass=$user['pass'];
+    $pass=time()+60*60*24*7;
     $username=$user['full_name'];
     $email=$user['email'];
     

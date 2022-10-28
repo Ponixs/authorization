@@ -23,10 +23,10 @@
 
 			<?php 
 				if (!empty($_SESSION['message'])) {
-					if ($_SESSION['message']==='You are registered'||$_SESSION['message']==='incorrect login or password'||$_SESSION['message']==='You have changed your password!') {
-						echo '<p class="msg">' . $_SESSION['message'] . '</p>';
-						unset($_SESSION['message']);
-					}
+					
+					echo '<p class="msg">' . $_SESSION['message'] . '</p>';
+					unset($_SESSION['message']);
+
 					
 				}
 				
